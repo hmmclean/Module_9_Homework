@@ -1,4 +1,8 @@
-﻿CREATE TABLE "Employees" (
+﻿-- Originally exported from QuickDBD. 
+-- Edited for additional clarity.
+
+-- Create Tables
+CREATE TABLE "Employees" (
     "emp_no" int   NOT NULL,
     "emp_title_id" varchar(10)   NOT NULL,
     "birth_date" date   NOT NULL,
@@ -48,6 +52,8 @@ CREATE TABLE "DepartmentName" (
      )
 );
 
+-- Add relationships with foreign keys
+
 ALTER TABLE "Employees" ADD CONSTRAINT "fk_Employees_emp_title_id" FOREIGN KEY("emp_title_id")
 REFERENCES "EmployeeTitle" ("title_id");
 
@@ -65,3 +71,5 @@ REFERENCES "DepartmentName" ("dept_no");
 
 ALTER TABLE "Manager" ADD CONSTRAINT "fk_Manager_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "Employees" ("emp_no");
+
+-- Imported CSVs into tables in order according to foreign key relationships: EmployeeTitle, Employees, DepartmentName, Department, Manager, Salary.
